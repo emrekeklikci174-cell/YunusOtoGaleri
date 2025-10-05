@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YunusOtoGaleri - Sahibinden Kalite</title>
+    <style>
+        /* TEMEL STLLER */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #dc3545, #b02a37);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            text-align: center;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* NAVIGATION */
+        .nav {
+            background: #333;
+            padding: 15px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            background: #dc3545;
+        }
+        
+        /* ARAMA ÇUBUU */
+        .search-bar {
+            background: #ffc107;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .search-box {
+            display: inline-block;
+            background: white;
+            padding: 10px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .search-box input {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            width: 400px;
+            font-size: 16px;
+        }
+        
+        .search-box button {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        
+        /* ARAÇ LSTES */
+        .vehicles-section {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .vehicle-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .vehicle-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #dc3545, #ffc107, #28a745, #17a2b8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .vehicle-info {
+            padding: 20px;
+        }
+        
+        .vehicle-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .vehicle-price {
+            color: #dc3545;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .vehicle-details {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .contact-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            flex: 1;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: #218838;
+        }
+        
+        .buy-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            flex: 1;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .buy-btn:hover {
+            background: #c82333;
+        }
+        
+        /* LETM */
+        .contact-section {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .contact-info {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* KATEGOR FLTRELEME */
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            background: white;
+            border: 2px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active {
+            background: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+        
+        .category-btn:hover {
+            border-color: #dc3545;
+        }
+
+        /* SATIN AL MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .modal h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .confirm-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cancel-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">YUNUS OTO GALER</div>
+            <div class="tagline">Güvenilir Alveriin Adresi - 150+ Araç Stok</div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="#anasayfa">Ana Sayfa</a></li>
+                <li><a href="#arabalar">Arabalar</a></li>
+                <li><a href="#motorlar">Motorlar</a></li>
+                <li><a href="#scooter">Scooter</a></li>
+                <li><a href="#traktor">Traktörler</a></li>
+                <li><a href="#iletisim">letiim</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ARAMA ÇUBUU -->
+    <section class="search-bar">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" placeholder="Marka, model veya araç tipi ara...">
+                <button>Ara</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- KATEGOR FLTRELER -->
+    <section class="vehicles-section">
+        <div class="container">
+            <h2 class="section-title">STOKTAK ARAÇLARIMIZ</h2>
+            
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">Tümü (150)</button>
+                <button class="category-btn" data-category="araba">Arabalar (60)</button>
+                <button class="category-btn" data-category="motor">Motorlar (40)</button>
+                <button class="category-btn" data-category="scooter">Scooter (30)</button>
+                <button class="category-btn" data-category="traktor">Traktörler (20)</button>
+            </div>
+
+            <!-- ARAÇ LSTES -->
+            <div class="vehicle-grid">
+                <!-- Araç 1 -->
+                <div class="vehicle-card" data-category="araba">
+                    <div class="vehicle-image" style="background: linear-gradient(45deg, #dc3545, #b02a37);">
+                        BMW 3.20i - 2023 Model
+                    </div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-title">BMW 3.20i Luxury Line</div>
+                        <div class="vehicle-price">1.850.000 TL</div>
+                        <div class="vehicle-details">2023 • 15.000 km • Otomatik • Benzin</div>
+                        <div class="button-group">
+                            <button class="contact-btn" onclick="callOwner('05431817392')">Hemen Ara</button>
+                            <button class="buy-btn" onclick="buyVehicle('BMW 3.20i Luxury Line')">Satn Al</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Araç 2 -->
+                <div class="vehicle-card" data-category="motor">
+                    <div class="vehicle-image" style="background: linear-gradient(45deg, #28a745, #1e7e34);">
+                        Honda CBR 650R
+                    </div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-title">Honda CBR 650R Sport</div>
+                        <div class="vehicle-price">450.000 TL</div>
+                        <div class="vehicle-details">2024 • 2.500 km • 650cc • Sport</div>
+                        <div class="button-group">
+                            <button class="contact-btn" onclick="callOwner('05431817392')">Hemen Ara</button>
+                            <button class="buy-btn" onclick="buyVehicle('Honda CBR 650R Sport')">Satn Al</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Araç 3 -->
+                <div class="vehicle-card" data-category="scooter">
+                    <div class="vehicle-image" style="background: linear-gradient(45deg, #ffc107, #e0a800);">
+                        Vespa Primavera 150
+                    </div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-title">Vespa Primavera 150</div>
+                        <div class="vehicle-price">125.000 TL</div>
+                        <div class="vehicle-details">2023 • 8.000 km • 150cc • Scooter</div>
+                        <div class="button-group">
+                            <button class="contact-btn" onclick="callOwner('05431817392')">Hemen Ara</button>
+                            <button class="buy-btn" onclick="buyVehicle('Vespa Primavera 150')">Satn Al</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Araç 4 -->
+                <div class="vehicle-card" data-category="traktor">
+                    <div class="vehicle-image" style="background: linear-gradient(45deg, #17a2b8, #138496);">
+                        New Holland T7.225
+                    </div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-title">New Holland T7.225</div>
+                        <div class="vehicle-price">2.350.000 TL</div>
+                        <div class="vehicle-details">2022 • 1.200 saat • 225 HP • Dizel</div>
+                        <div class="button-group">
+                            <button class="contact-btn" onclick="callOwner('05431817392')">Hemen Ara</button>
+                            <button class="buy-btn" onclick="buyVehicle('New Holland T7.225')">Satn Al</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dier araçlar -->
+                <div class="vehicle-card" data-category="araba">
+                    <div class="vehicle-image" style="background: linear-gradient(45deg, #dc3545, #b02a37);">
+                        Mercedes C200
+                    </div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-title">Mercedes-Benz C200 AMG</div>
+                        <div class="vehicle-price">1.650.000 TL</div>
+                        <div class="vehicle-details">2022 • 25.000 km • Otomatik • Benzin</div>
+                        <div class="button-group">
+                            <button class="contact-btn" onclick="callOwner('05431817392')">Hemen Ara</button>
+                            <button class="buy-btn" onclick="buyVehicle('Mercedes-Benz C200 AMG')">Satn Al</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vehicle-card" data-category="motor">
+                    <div class="vehicle-image" style="background: linear-gradient(45deg, #28a745, #1e7e34);">
+                        Yamaha MT-07
+                    </div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-title">Yamaha MT-07</div>
+                        <div class="vehicle-price">320.000 TL</div>
+                        <div class="vehicle-details">2023 • 5.000 km • 689cc • Naked</div>
+                        <div class="button-group">
+                            <button class="contact-btn" onclick="callOwner('05431817392')">Hemen Ara</button>
+                            <button class="buy-btn" onclick="buyVehicle('Yamaha MT-07')">Satn Al</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SATIN AL MODAL -->
+    <div id="buyModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalMessage">Satn Alma stei</h3>
+            <p>Müteriye otomatik mesaj gönderilecek ve sizi arayacaklar.</p>
+            <div class="modal-buttons">
+                <button class="confirm-btn" onclick="sendPurchaseMessage()">Onayla</button>
+                <button class="cancel-btn" onclick="closeModal()">ptal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LETM -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">LETM BLGLER</h2>
+            <div class="contact-info"> Telefon: <strong>0543 181 7392</strong></div>
+            <div class="contact-info"> E-posta: <strong>emrekeklikci174@gmail.com</strong></div>
+            <div class="contact-info"> Adres: <strong>Oto Galeri Bölgesi - stanbul</strong></div>
+            <div class="contact-info"> Çalma Saatleri: <strong>09:00 - 19:00 (Pazartesi - Cumartesi)</strong></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 YunusOtoGaleri - Tüm haklar sakldr.</p>
+            <p>150+ araç stoku ile hizmetinizdeyiz!</p>
+        </div>
+    </footer>
+
+    <script>
+        let selectedVehicle = '';
+
+        // Kategori filtreleme ilevi
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const vehicleCards = document.querySelectorAll('.vehicle-card');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const selectedCategory = this.getAttribute('data-category');
+                    
+                    vehicleCards.forEach(card => {
+                        if (selectedCategory === 'all' || card.getAttribute('data-category') === selectedCategory) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Arama ilevi
+            const searchInput = document.querySelector('.search-box input');
+            const searchButton = document.querySelector('.search-box button');
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                vehicleCards.forEach(card => {
+                    const title = card.querySelector('.vehicle-title').textContent.toLowerCase();
+                    const details = card.querySelector('.vehicle-details').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || details.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        });
+
+        // Telefon arama fonksiyonu
+        function callOwner(phoneNumber) {
+            if (confirm('Müteriyi aramak için yönlendirileceksiniz. Devam edilsin mi?')) {
+                window.location.href = 'tel:' + phoneNumber;
+            }
+        }
+
+        // Satn alma fonksiyonu
+        function buyVehicle(vehicleName) {
+            selectedVehicle = vehicleName;
+            const modal = document.getElementById('buyModal');
+            const modalMessage = document.getElementById('modalMessage');
+            
+            modalMessage.textContent = `${vehicleName} aracn satn almak istiyor musunuz?`;
+            modal.style.display = 'flex';
+        }
+
+        // Modal kapatma
+        function closeModal() {
+            document.getElementById('buyModal').style.display = 'none';
+        }
+
+        // Satn alma mesaj gönderme
+        function sendPurchaseMessage() {
+            const message = `Merhaba, ${selectedVehicle} isimli aracnz satn almak istiyorum. Lütfen benimle iletiime geçin.`;
+            
+            // WhatsApp mesaj
+            const whatsappUrl = `https://wa.me/905431817392?text=${encodeURIComponent(message)}`;
+            
+            // Email gönderimi
+            const emailSubject = `${selectedVehicle} Satn Alma stei`;
+            const emailBody = `${message}\n\nletiim Bilgilerim:\nTelefon: Müteri sizi arayacak\n\nBu 
